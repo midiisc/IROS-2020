@@ -2,9 +2,9 @@
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 %        1         2         3         4         5         6         7         8
 
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+%\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
 
-%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
 
 \IEEEoverridecommandlockouts                              % This command is only needed if 
                                                           % you want to use the \thanks command
@@ -54,7 +54,7 @@ Comparison of SLAM algorithms on  virtual test bed URSSA for space applications
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Robots are critical enablers for space exploration as they help offset safety risks associated with a human astronaut, aid in precursor missions prior to manned missions, provide critical on-mission and post-hoc support. However, designing robotic systems to navigate, map and localize itself in hostile and unknown extraterrestrial worlds remains open challenge. The prime reason for this being the testing the semi-autonomous agents  for robust performance in such environments. In this paper, we address this issue by using URSSA (Unity-ROS Simulator for Space Applications) for compare performance of three popular Visual Intertial Odometry (VIO) Simultaneous Localization And Mapping (SLAM) algorithms on lunar surface. The test architecture, agent modelling, rationale for test cases and generation of ground truth data is discussed. Paper concludes with results from simulations comparing the algorithms and discusses on failure reasons and potential directions for improving algorithms for better applicability such environments. We believe such a comparative study can give vital pointers for future research directions and help accelerate development of specific algorithms for SLAM in extra terrestrial environments.
+Robots are critical enablers for space exploration as they help offset safety risks associated with a human astronaut, aid in precursor missions prior to manned missions, provide critical on-mission and post-hoc support. However, designing robotic systems to navigate, map and localize itself in hostile and unknown extraterrestrial worlds remains open challenge. The prime reason for this being the testing the semi-autonomous agents  for robust performance in such environments. In this paper, we address this issue by using Unity-ROS Simulator for Space Applications(URSSA) for compare performance of three popular Visual Intertial Odometry (VIO) Simultaneous Localization And Mapping (SLAM) algorithms on lunar surface. The test architecture, agent modelling, rationale for test cases and generation of ground truth data is discussed. Paper concludes with results from simulations comparing the algorithms and discusses on failure reasons and potential directions for improving algorithms for better applicability such environments. We believe such a comparative study can give vital pointers for future research directions and help accelerate development of specific algorithms for SLAM in extra terrestrial environments.
 
 \end{abstract}
 
@@ -62,20 +62,19 @@ Robots are critical enablers for space exploration as they help offset safety ri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
 
-The last decade has seen major space faring nations chart out focussed plans for deep space exploration starting with the moon. The Artemis I,  Chang'e-4 mission and Chandrayaan-2 are some of the ongoing and completed precursor missions to put human explorers on lunar surface. These missions have robotic systems onboard to do remote investigation,survey and data collection of the lunar surface. The follow-up missions to all of these missions have a increasing component of robotic systems of which ground based mobility systems are central. Wheeled rovers are the most commonly used platform for planetary surface mobility. To date, they have been used for surface exploration, mapping and scientific investigation. However, future missions call for 
+The last decade has seen major space faring nations chart out focussed plans for deep space exploration starting with the moon. The Artemis I,  Chang'e-4 mission and Chandrayaan-2 are some of the ongoing and completed precursor missions to put human explorers on lunar surface. These missions have robotic systems onboard to do remote investigation,survey and data collection of the lunar surface. The follow-up missions to all of these missions have a increasing component of robotic systems of which ground based mobility systems are central. Wheeled rovers are the most commonly used platform for planetary surface mobility. To date, they have been used for surface exploration, mapping and scientific investigation. However, future missions call for advanced mission operations including periodic monitoring of geo-spatially distributed scientific assets, remote assembly and In-Situ Resource Utilization(ISRU)  tasks. The first of these call for advanced navigation, mapping and localization capabilities and the ISRU tasks require advanced manipulation and dexterity capabilities. 
 
-\section{PROCEDURE FOR PAPER SUBMISSION}
+Through this paper, we aim to address the problem of designing robust test beds to robustly test and design Visual Intertial Odometry (VIO) Simultaneous Localization And Mapping (SLAM) algorithms specific to extra-terrestrial environment. This paper specifically discusses a case-study of using in-house developed Unity-ROS Simulator for Space Applications(URSSA) to test and compare perdormance of these algorithms in a virtual lunar environment.
 
-\subsection{Selecting a Template (Heading 2)}
+\section{Simulator and Test-System model}
 
-First, confirm that you have the correct template for your paper size. This template has been tailored for output on the US-letter paper size. 
-It may be used for A4 paper size if the paper size setting is suitably modified.
+\subsection{Simulator model}
 
-\subsection{Maintaining the Integrity of the Specifications}
+\subsection{Test System model}
 
-The template is used to format your paper and style the text. All margins, column widths, line spaces, and text fonts are prescribed; please do not alter them. You may note peculiarities. For example, the head margin in this template measures proportionately more than is customary. This measurement and others are deliberate, using specifications that anticipate your paper as one part of the entire proceedings, and not as an independent document. Please do not revise any of the current designations
+\subsection{Test-Case generation}
 
-\section{MATH}
+\subsection{Timing guarantees}
 
 Before you begin to format your paper, first write and save the content as a separate text file. Keep your text and graphic files separate until after the text has been formatted and styled. Do not use hard tabs, and limit use of hard returns to only one return at the end of a paragraph. Do not add any kind of pagination anywhere in the paper. Do not number text heads-the template will do that for you.
 
