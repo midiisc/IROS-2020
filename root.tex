@@ -11,6 +11,34 @@
 
 \overrideIEEEmargins                                      % Needed to meet printer requirements.
 
+\usepackage{xcolor}
+\usepackage{xifthen}
+\newboolean{showNotes}
+\setboolean{showNotes}{false}
+
+\newcommand\coltxt[1]{{ \ifthenelse{\isempty{#1}}%
+    {\textbf{\textcolor{blue}{(Ref.)}}}
+    {\textbf{\textcolor{blue}{(#1)}}}}}
+
+\newcommand\msm[1]{\ifthenelse {\boolean{showNotes}}
+ { \ifthenelse{\isempty{#1}}%
+    {\textbf{\textcolor{blue}{(Ref.)}}}% if #1 is empty
+    {\textbf{\textcolor{blue}{(#1)}}}}% if #1 is not empty
+ {}
+}
+\newcommand\dk[1]{\ifthenelse {\boolean{showNotes}}
+ { \ifthenelse{\isempty{#1}}%
+    {\textbf{\textcolor{green}{(Ref.)}}}% if #1 is empty
+    {\textbf{\textcolor{green}{(#1)}}}}% if #1 is not empty
+ {}
+}
+\newcommand\dz[1]{\ifthenelse {\boolean{showNotes}}
+ { \ifthenelse{\isempty{#1}}%
+    {\textbf{\textcolor{red}{(Ref.)}}}% if #1 is empty
+    {\textbf{\textcolor{red}{(#1)}}}}% if #1 is not empty
+ {}
+}
+
 %In case you encounter the following error:
 %Error 1010 The PDF file may be corrupt (unable to open PDF file) OR
 %Error 1000 An error occurred while parsing a contents stream. Unable to analyze the PDF file.
@@ -62,19 +90,29 @@ Robots are critical enablers for space exploration as they help offset safety ri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
 
-The last decade has seen major space faring nations chart out focussed plans for deep space exploration starting with the moon. The Artemis I,  Chang'e-4 mission and Chandrayaan-2 are some of the ongoing and completed precursor missions to put human explorers on lunar surface. These missions have robotic systems onboard to do remote investigation,survey and data collection of the lunar surface. The follow-up missions to all of these missions have a increasing component of robotic systems of which ground based mobility systems are central. Wheeled rovers are the most commonly used platform for planetary surface mobility. To date, they have been used for surface exploration, mapping and scientific investigation. However, future missions call for advanced mission operations including periodic monitoring of geo-spatially distributed scientific assets, remote assembly and In-Situ Resource Utilization(ISRU)  tasks. The first of these call for advanced navigation, mapping and localization capabilities and the ISRU tasks require advanced manipulation and dexterity capabilities. 
+The last decade has seen major space faring nations chart out focussed plans for deep space exploration starting with the moon. The Artemis I\msm{Ref.},  Chang'e-4 mission\msm{Ref.} and Chandrayaan-2\msm{Ref.} are some of the ongoing and completed precursor missions to put human explorers on lunar surface. These missions have robotic systems onboard to do remote investigation,survey and data collection of the lunar surface. The follow-up missions to all of these missions have a increasing component of robotic systems of which ground based mobility systems are central. Wheeled rovers are the most commonly used platform for planetary surface mobility. To date, they have been used for surface exploration, mapping and scientific investigation. However, future missions call for advanced mission operations including periodic monitoring of geo-spatially distributed scientific assets, remote assembly and In-Situ Resource Utilization(ISRU)\msm{Ref.}  tasks. The first of these call for advanced navigation, mapping and localization capabilities and the ISRU tasks require advanced manipulation and dexterity capabilities. 
 
-Through this paper, we aim to address the problem of designing robust test beds to robustly test and design Visual Intertial Odometry (VIO) Simultaneous Localization And Mapping (SLAM) algorithms specific to extra-terrestrial environment. This paper specifically discusses a case-study of using in-house developed Unity-ROS Simulator for Space Applications(URSSA) to test and compare perdormance of these algorithms in a virtual lunar environment.
+Through this paper, we aim to address the problem of designing robust test beds to robustly test and design Visual Intertial Odometry (VIO)\msm{Ref.} Simultaneous Localization And Mapping (SLAM) algorithms specific to extra-terrestrial environment. This paper specifically discusses a case-study of using in-house developed Unity-ROS Simulator for Space Applications(URSSA) to test and compare perdormance of these algorithms in a virtual lunar environment. Some simulators exist in literature, but have their fair share of shortcomings.
 
-\section{Simulator and Test-System model}
-
-\subsection{Simulator model}
-
-\subsection{Test System model}
-
+\section{Simulator model}
+The simulation environment uses Unity for simulating the environment, topography, photometry, rover dynamics and terrain interaction. The details of the modelling are in []. 
+\subsection{Environment model}
+\subsubsection{Topographic Model}
+\subsubsection{Photometric Model}
+Include Skymap
+\subsubsection{Rover Model}
+\subsubsection{Terrain Interaction Model}
+\subsection{Agent Model}
+In ROS.
+\subsection{Timer Model}
+\subsubsection{Time Synchronization}
+\subsubsection{Real Time compliance}
+\subsubsection{Fixed Update}
+\section{Test System model}
 \subsection{Test-Case generation}
-
-\subsection{Timing guarantees}
+\section{Simulation }
+\section{Results and Discussion}
+\section{Conclusion}
 
 Before you begin to format your paper, first write and save the content as a separate text file. Keep your text and graphic files separate until after the text has been formatted and styled. Do not use hard tabs, and limit use of hard returns to only one return at the end of a paragraph. Do not add any kind of pagination anywhere in the paper. Do not number text heads-the template will do that for you.
 
