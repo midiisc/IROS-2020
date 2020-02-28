@@ -41,7 +41,7 @@ Comparison of SLAM algorithms on Unity-ROS(Robot Operating System) Simulator for
 }
 
 
-\author{Midhun S. Menon$^{1}$ and Michael E. Walker$^{2}$  and Daniel Koris$^{2}$ and Daniel Szafir$^{2,3}$ and Jack Burns$^{1}$% <-this % stops a space
+\author{Midhun S. Menon$^{1}$ and Daniel Koris$^{2}$ and Daniel Szafir$^{2,3}$ and Jack Burns$^{1}$% <-this % stops a space
 \thanks{*This work is directly supported by the NASA Solar System Exploration Research Virtual Institute cooperative agreement 80ARC017M0006.}% <-this % stops a space
 \thanks{$^{1}$Center for Astrophysics and Space Astronomy, University of Colorado Boulder}%
 \thanks{$^{2}$Department of Computer Science, University of Colorado, Boulder}%
@@ -71,8 +71,10 @@ Robots are critical enablers for space exploration as they help offset safety ri
 The last decade has seen major space faring nations chart out focussed plans for deep space exploration starting with the moon. The Artemis I\msm{Ref.},  Chang'e-4 mission\msm{Ref.} and Chandrayaan-2\msm{Ref.} are some of the ongoing and completed precursor missions to put human explorers on lunar surface. These missions have robotic systems onboard to do remote investigation,survey and data collection of the lunar surface. The follow-up missions to all of these missions have a increasing component of robotic systems of which ground based mobility systems are central. Wheeled rovers are the most commonly used platform for planetary surface mobility. To date, they have been used for surface exploration, mapping and scientific investigation. However, future missions call for advanced mission operations including periodic monitoring of geo-spatially distributed scientific assets, remote assembly and In-Situ Resource Utilization(ISRU)\msm{Ref.}  tasks. The first of these call for navigation, mapping and localization capabilities over large ranges and the ISRU tasks require advanced manipulation and dexterity capabilities. More importantly, these algorithms need to be tested under a rich and varying environment to make sure they perform reliably. In this paper, the focus is on the testing of algorithms for navigation, mapping and localization. Currently, space robotics community relies on mission analogs for evaluation and testing of such on-board algorithms. These are operations carried out on Earth in a mock-up of the true mission environment. However, mission analogs are incapable of simulating certain critical, unique and finer aspects of the extraplanetary environment (e.g., gravity, photometric anomalies etc.) which impacts testing aefficacy. As an example, visual artefacts present in target environment but not simulated in a mission analog may artificially inflate expectations and over-estimate algorithm performance during testing. On similar lines, locating a matching topography for a mission analog on earth can also prove increasingly challenging as the geological processes governing surface formation and evolution will differ entirely in most cases.    
 
 In this research, we wish to address the problem of designing a virtual analogs for extra-terrestrial environments within a multiphysics framework for advancing research in algorithms that govern low-level autonomy and support interactive trade-offs between various levels of supervisory control. Furthermore, such virtual environments may enable future explorations into the design of new interfaces that support ground control and/or astronaut operation of surface robots from orbital stations to significantly improve critical space exploration missions. 
+\section{Current Work}
+Virtual terrain and environments have been in use in the modeling-simulation and computer graphics community for many years. One of the earliest applications of virtual terrain was to model terrain wheel interactions( \cite{yang2007realistic,yang2008virtual,ding2008design,gao2012virtual}). In \cite{andreev2018creating}, virtual environments are used for training purposes in space tasks and mission operations. However, both these applications were limited in scope of modeling only the topography of the terrain. Some of the first applications of accurate photometric models were in better scientific visualization of celestial bodies(\cite{van2011investigation,wright2011preparing, jensen2001physically}) and for investigating perceptual errors made by human beings  when infering scales and distances on extra-terrestrial environments\cite{oravetz2011slope}. More recently, a commercially available software platform called Planet and Asteroid Natural Scene Generation Utility(PANGU) uses accurate photometric and optical modeling  to create high fidelity simulation of terrains and Entry-Descent-Landing(EDL) simulations(\cite{dunstan2018pangu,martin2019planetary}). However, it is a highly specific software meant only for visualization and the best achievable frame rates are less than 10Hz. 
 
-Some of the existing frameworks for simulating the Moon have been used by NASA\cite{allan2019planetary}. However,  they have not been designed for evaluating robotic vision-based navigation algorithms and are limited in scalability and their ability to provide perceptually real-time simulation. In addition, other frameworks are mostly based on classic simulation environments such as Gazebo\cite{koenig2004design}, which are not necessarily as efficient, realistic, or scalable as modern engines such as Unity (\cite{engine2008unity, konrad2019simulation}). 
+To the best of our knowledge, the only other framework for simulating the rover-environment interaction is developed inhouse by NASA\cite{allan2019planetary} for moon. However, it has been designed for high-fidelity simulation of lunar environment vision-based navigation algorithms and are limited in scope, scalability and their ability to provide perceptually real-time simulation. In addition, other frameworks are mostly based on classic simulation platform called Gazebo\cite{koenig2004design}, which is not always as efficient, realistic, or scalable as modern engines such as Unity (\cite{engine2008unity, konrad2019simulation}). 
 
 This is the reason for simulators becoming increasingly based on frameworks like ROS\cite{quigley2009ros} and Unity(\cite{babaians2018ros2unity3d,bischoffm_2019_06}). Hence, in this paper, in-house developed simulation framework Unity-ROS Simulator for Space Applications(URSSA)\msm{Ref.} is used, that leverages the Unity game engine as a virtual environment simulator to take advantage of its advanced rendering pipeline, support for reliable physics engines and scalable memory management capabilities. ROS is used as the framework to model the autonomous/semi-autonomous robotic systems interacting with the virtual world in Unity. We demonstrate the comparative testing of three popular Visual and/or Intertial Odometry (VIO)\msm{Ref.} Simultaneous Localization And Mapping (SLAM) algorithms for surface exploration of moon. Only visual and inertial sensing modalities have been considered here as these are the ubiquitous sensors reliably flight tested and proven with minimal mass penalties on multiple missions to date by space agencies across the world. However, it may be noted that URSSA has no such restrictions.
 
@@ -104,136 +106,21 @@ Right  out-of-the-box, the system does not have time synchronization as the time
 If the simulator is to plugin to an external agent with independent clock, the combined system will loose time-synchronization. A typical scenario is the case where the simulator is interfaced with a independent SLAM algorithm running its own clock internally, in which case estimation results will be wrongly time stamped causing accumulated error over time. In order to avoid this, the WebRTC architecture\cite{loreto2014real} is implemented for the Unity websocket communication. The WebRTC is a Real-Time Compliant websocket communication architecture with hard-realtime guarantees, thereby helping to mitigate the timing issue  and making the simulator robust. 
 \subsubsection{Fixed Update}
 The \textit{FixedUpdate} method is used for the physics calculations in Unity by which fidelity of the physics calculations are guaranteed at a fixed rate independent of the rendering frame rate. This helps make sure that physics computations are not skipped when the rendering frame rate gets throttled, making the simulation more robust to numerical errors and instabilities from large integration steps.
-\section{Test System model}
-
-\subsection{Test-Case generation}
+\section{Test System}
+The objective of this test system is to evaluate and compare performance of various SLAM algorithms on extra-terrestrial planetary bodies. Data is recorded over preset trajectories on the terrain using rosbags and fed as input to the SLAM algorithms, who then estimate the pose based on these inputs. Due to the probabilistic nature of many SLAM algorithms, statistical measures over multiple iterations of the same trajectory are generated and reported for performance evaluation.
+The main variables in this model are (a) Sun-Camera geometry (b) Shader Hapke coefficients (c) Path type. The test system has a total of 54 test cases as detailed below.
+\subsection{Sun-Camera Geometry}
+To study performance under varying extremes of sun-camera geometry, two positions of sun's elevation-$10^\circ$(dawn/dusk) and $90^\circ$(noon) are chosen. And at each of these elevations,  three azimuths(with respect to rover camera) are tested-$0^\circ$(anti), $90^\circ$(cross) and $180^\circ$(pro). 
+\subsection{Shader Hapke coefficients}
+To evaluate algorithm performance under varying shader backscatter conditions, three test cases are proposed - adversarial, nominal and benign. This will help evaluate performance and sensitivity to shader parameters.
+\subsection{Path type}
+For comparing performance under different types of trajectory shapes, the algorithms have to be run with three types of trajectories - straight, circular and rectangular trajectories.
 \section{Simulation }
+For this case study, we leveraged the modular architecture of URSSA to run a simulation using desktop PCs to distribute the compute load of virtual environment rendering and running SLAM. One machine (Intel 3.6 GHz processor, 32 GB RAM, NVIDIA GeForce RTX 2080 8 GB graphics card) ran the Unity environment simulation using Microsoft Windows 10 while the other (Intel 4 GHz processor, 8 GB RAM, NVIDIA GeForce GTX 1070 8 GB graphics card) performed the back-end SLAM estimation and robotic control using ROS Kinetic on Ubuntu 16.04. In the virtual lunar environment, the only source of illumination was sunlight, which was modeled as a directional white source (R:255,G:255,B:255). The virtual $1km\times 1km$ lunar terrain was modeled with a resolution of 0.5mm to ensure it has enough fidelity even when viewed from a height of 0.8m--1.0m (i.e., the typical height of a mast camera for a micro-rover).\msm{Add table of test conditions}
 \section{Results and Discussion}
+To be Done
 \section{Conclusion}
-
-Before you begin to format your paper, first write and save the content as a separate text file. Keep your text and graphic files separate until after the text has been formatted and styled. Do not use hard tabs, and limit use of hard returns to only one return at the end of a paragraph. Do not add any kind of pagination anywhere in the paper. Do not number text heads-the template will do that for you.
-
-Finally, complete content and organizational editing before formatting. Please take note of the following items when proofreading spelling and grammar:
-
-\subsection{Abbreviations and Acronyms} Define abbreviations and acronyms the first time they are used in the text, even after they have been defined in the abstract. Abbreviations such as IEEE, SI, MKS, CGS, sc, dc, and rms do not have to be defined. Do not use abbreviations in the title or heads unless they are unavoidable.
-
-\subsection{Units}
-
-\begin{itemize}
-
-\item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as �3.5-inch disk drive�.
-\item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
-\item Do not mix complete spellings and abbreviations of units: �Wb/m2� or �webers per square meter�, not �webers/m2�.  Spell out units when they appear in text: �. . . a few henries�, not �. . . a few H�.
-\item Use a zero before decimal points: �0.25�, not �.25�. Use �cm3�, not �cc�. (bullet list)
-
-\end{itemize}
-
-
-\subsection{Equations}
-
-The equations are an exception to the prescribed specifications of this template. You will need to determine whether or not your equation should be typed using either the Times New Roman or the Symbol font (please no other font). To create multileveled equations, it may be necessary to treat the equation as a graphic and insert it into the text after your paper is styled. Number equations consecutively. Equation numbers, within parentheses, are to position flush right, as in (1), using a right tab stop. To make your equations more compact, you may use the solidus ( / ), the exp function, or appropriate exponents. Italicize Roman symbols for quantities and variables, but not Greek symbols. Use a long dash rather than a hyphen for a minus sign. Punctuate equations with commas or periods when they are part of a sentence, as in
-
-$$
-\alpha + \beta = \chi \eqno{(1)}
-$$
-
-Note that the equation is centered using a center tab stop. Be sure that the symbols in your equation have been defined before or immediately following the equation. Use �(1)�, not �Eq. (1)� or �equation (1)�, except at the beginning of a sentence: �Equation (1) is . . .�
-
-\subsection{Some Common Mistakes}
-\begin{itemize}
-
-
-\item The word �data� is plural, not singular.
-\item The subscript for the permeability of vacuum ?0, and other common scientific constants, is zero with subscript formatting, not a lowercase letter �o�.
-\item In American English, commas, semi-/colons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)
-\item A graph within a graph is an �inset�, not an �insert�. The word alternatively is preferred to the word �alternately� (unless you really mean something that alternates).
-\item Do not use the word �essentially� to mean �approximately� or �effectively�.
-\item In your paper title, if the words �that uses� can accurately replace the word �using�, capitalize the �u�; if not, keep using lower-cased.
-\item Be aware of the different meanings of the homophones �affect� and �effect�, �complement� and �compliment�, �discreet� and �discrete�, �principal� and �principle�.
-\item Do not confuse �imply� and �infer�.
-\item The prefix �non� is not a word; it should be joined to the word it modifies, usually without a hyphen.
-\item There is no period after the �et� in the Latin abbreviation �et al.�.
-\item The abbreviation �i.e.� means �that is�, and the abbreviation �e.g.� means �for example�.
-
-\end{itemize}
-
-
-\section{USING THE TEMPLATE}
-
-Use this sample document as your LaTeX source file to create your document. Save this file as {\bf root.tex}. You have to make sure to use the cls file that came with this distribution. If you use a different style file, you cannot expect to get required margins. Note also that when you are creating your out PDF file, the source file is only part of the equation. {\it Your \TeX\ $\rightarrow$ PDF filter determines the output file size. Even if you make all the specifications to output a letter file in the source - if your filter is set to produce A4, you will only get A4 output. }
-
-It is impossible to account for all possible situation, one would encounter using \TeX. If you are using multiple \TeX\ files you must make sure that the ``MAIN`` source file is called root.tex - this is particularly important if your conference is using PaperPlaza's built in \TeX\ to PDF conversion tool.
-
-\subsection{Headings, etc}
-
-Text heads organize the topics on a relational, hierarchical basis. For example, the paper title is the primary text head because all subsequent material relates and elaborates on this one topic. If there are two or more sub-topics, the next level head (uppercase Roman numerals) should be used and, conversely, if there are not at least two sub-topics, then no subheads should be introduced. Styles named �Heading 1�, �Heading 2�, �Heading 3�, and �Heading 4� are prescribed.
-
-\subsection{Figures and Tables}
-
-Positioning Figures and Tables: Place figures and tables at the top and bottom of columns. Avoid placing them in the middle of columns. Large figures and tables may span across both columns. Figure captions should be below the figures; table heads should appear above the tables. Insert figures and tables after they are cited in the text. Use the abbreviation �Fig. 1�, even at the beginning of a sentence.
-
-\begin{table}[h]
-\caption{An Example of a Table}
-\label{table_example}
-\begin{center}
-\begin{tabular}{|c||c|}
-\hline
-One & Two\\
-\hline
-Three & Four\\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-
-   \begin{figure}[thpb]
-      \centering
-      \framebox{\parbox{3in}{We suggest that you use a text box to insert a graphic (which is ideally a 300 dpi TIFF or EPS file, with all fonts embedded) because, in an document, this method is somewhat more stable than directly inserting a picture.
-}}
-      %\includegraphics[scale=1.0]{figurefile}
-      \caption{Inductance of oscillation winding on amorphous
-       magnetic core versus DC bias magnetic field}
-      \label{figurelabel}
-   \end{figure}
-   
-
-Figure Labels: Use 8 point Times New Roman for Figure labels. Use words rather than symbols or abbreviations when writing Figure axis labels to avoid confusing the reader. As an example, write the quantity �Magnetization�, or �Magnetization, M�, not just �M�. If including units in the label, present them within parentheses. Do not label axes only with units. In the example, write �Magnetization (A/m)� or �Magnetization {A[m(1)]}�, not just �A/m�. Do not label axes with a ratio of quantities and units. For example, write �Temperature (K)�, not �Temperature/K.�
-
-\section{CONCLUSIONS}
-
-A conclusion section is not required. Although a conclusion may review the main points of the paper, do not replicate the abstract as the conclusion. A conclusion might elaborate on the importance of the work or suggest applications and extensions. 
-
-\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
-                                  % on the last page of the document manually. It shortens
-                                  % the textheight of the last page by a suitable amount.
-                                  % This command does not take effect until the next page
-                                  % so it should come on the page before the last. Make
-                                  % sure that you do not shorten the textheight too much.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{APPENDIX}
-
-Appendixes should appear before the acknowledgment.
-
-\section*{ACKNOWLEDGMENT}
-
-The preferred spelling of the word �acknowledgment� in America is without an �e� after the �g�. Avoid the stilted expression, �One of us (R. B. G.) thanks . . .�  Instead, try �R. B. G. thanks�. Put sponsor acknowledgments in the unnumbered footnote on the first page.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
-
+To be Done.
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,refs}
