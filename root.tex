@@ -88,8 +88,8 @@ In this research, we wish to address the problem of designing a virtual analogs 
 \section{Current Work}
 \begin{figure*}[t]
       \centering
-        \includegraphics[width=0.8\textwidth]{Figures/Sys_architecture.pdf}
-      \caption{URSSA system diagram detailing our modular architecture for bidirectional Unity--ROS communication.}
+        \includegraphics[width=1.0\textwidth]{Figures/sysarch_test_diag.pdf}
+      \caption{(A) URSSA system diagram detailing our modular architecture for bidirectional Unity--ROS communication. (B) Test System architecture}
       \vspace{-1em}
       \label{flowchart}
 \end{figure*}
@@ -136,7 +136,7 @@ If the simulator is to plugin to an external agent with independent clock, the c
 \subsubsection{Fixed Update}
 The \textit{FixedUpdate} method is used for the physics calculations in Unity by which fidelity of the physics calculations are guaranteed at a fixed rate independent of the rendering frame rate. This helps make sure that physics computations are not skipped when the rendering frame rate gets throttled, making the simulation more robust to numerical errors and instabilities from large integration steps.
 \section{Test System}
-The objective of this test system is to evaluate and compare performance of various SLAM algorithms on extra-terrestrial planetary bodies. Data is recorded over preset trajectories on the terrain using rosbags and fed as input to the SLAM algorithms, who then estimate the pose based on these inputs. Due to the probabilistic nature of many SLAM algorithms, statistical measures over multiple iterations of the same trajectory are generated and reported for performance evaluation.
+The objective of this test system is to evaluate and compare performance of various SLAM algorithms on extra-terrestrial planetary bodies. Data is recorded over preset trajectories on the terrain using rosbags and fed as input to the SLAM algorithms, who then estimate the pose based on these inputs. Due to the probabilistic nature of many SLAM algorithms, statistical measures over multiple iterations of the same trajectory are generated and reported for performance evaluation(refer Fig.~\ref{flowchart}(B)).
 The main variables in this model are (a) Sun-Camera geometry (b) Shader Hapke coefficients (c) Path type. The test system has a total of 54 test cases as detailed below.
 \subsection{Sun-Camera Geometry}
 To study performance under varying extremes of sun-camera geometry, two positions of sun's elevation-$10^\circ$(dawn/dusk) and $90^\circ$(noon) are chosen. And at each of these elevations,  three azimuths(with respect to rover camera) are tested-$0^\circ$(anti), $90^\circ$(cross) and $180^\circ$(pro). 
