@@ -1,0 +1,521 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipe SYSTEM "ipe.dtd">
+<ipe version="70212" creator="Ipe 7.2.13">
+<info created="D:20200228044351" modified="D:20200228171215"/>
+<ipestyle name="basic">
+<symbol name="arrow/arc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/farc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/ptarc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fptarc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="mark/circle(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</symbol>
+<symbol name="mark/disk(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+</path>
+</symbol>
+<symbol name="mark/fdisk(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+0.5 0 0 0.5 0 0 e
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</group>
+</symbol>
+<symbol name="mark/box(sx)" transformations="translations">
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</symbol>
+<symbol name="mark/square(sx)" transformations="translations">
+<path fill="sym-stroke">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+</path>
+</symbol>
+<symbol name="mark/fsquare(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+-0.5 -0.5 m
+0.5 -0.5 l
+0.5 0.5 l
+-0.5 0.5 l
+h
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="mark/cross(sx)" transformations="translations">
+<group>
+<path fill="sym-stroke">
+-0.43 -0.57 m
+0.57 0.43 l
+0.43 0.57 l
+-0.57 -0.43 l
+h
+</path>
+<path fill="sym-stroke">
+-0.43 0.57 m
+0.57 -0.43 l
+0.43 -0.57 l
+-0.57 0.43 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="arrow/fnormal(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/pointed(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fpointed(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/linear(spx)">
+<path stroke="sym-stroke" pen="sym-pen">
+-1 0.333 m
+0 0 l
+-1 -0.333 l
+</path>
+</symbol>
+<symbol name="arrow/fdouble(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/double(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<pen name="heavier" value="0.8"/>
+<pen name="fat" value="1.2"/>
+<pen name="ultrafat" value="2"/>
+<symbolsize name="large" value="5"/>
+<symbolsize name="small" value="2"/>
+<symbolsize name="tiny" value="1.1"/>
+<arrowsize name="large" value="10"/>
+<arrowsize name="small" value="5"/>
+<arrowsize name="tiny" value="3"/>
+<color name="red" value="1 0 0"/>
+<color name="green" value="0 1 0"/>
+<color name="blue" value="0 0 1"/>
+<color name="yellow" value="1 1 0"/>
+<color name="orange" value="1 0.647 0"/>
+<color name="gold" value="1 0.843 0"/>
+<color name="purple" value="0.627 0.125 0.941"/>
+<color name="gray" value="0.745"/>
+<color name="brown" value="0.647 0.165 0.165"/>
+<color name="navy" value="0 0 0.502"/>
+<color name="pink" value="1 0.753 0.796"/>
+<color name="seagreen" value="0.18 0.545 0.341"/>
+<color name="turquoise" value="0.251 0.878 0.816"/>
+<color name="violet" value="0.933 0.51 0.933"/>
+<color name="darkblue" value="0 0 0.545"/>
+<color name="darkcyan" value="0 0.545 0.545"/>
+<color name="darkgray" value="0.663"/>
+<color name="darkgreen" value="0 0.392 0"/>
+<color name="darkmagenta" value="0.545 0 0.545"/>
+<color name="darkorange" value="1 0.549 0"/>
+<color name="darkred" value="0.545 0 0"/>
+<color name="lightblue" value="0.678 0.847 0.902"/>
+<color name="lightcyan" value="0.878 1 1"/>
+<color name="lightgray" value="0.827"/>
+<color name="lightgreen" value="0.565 0.933 0.565"/>
+<color name="lightyellow" value="1 1 0.878"/>
+<dashstyle name="dashed" value="[4] 0"/>
+<dashstyle name="dotted" value="[1 3] 0"/>
+<dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
+<dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
+<textsize name="large" value="\large"/>
+<textsize name="Large" value="\Large"/>
+<textsize name="LARGE" value="\LARGE"/>
+<textsize name="huge" value="\huge"/>
+<textsize name="Huge" value="\Huge"/>
+<textsize name="small" value="\small"/>
+<textsize name="footnote" value="\footnotesize"/>
+<textsize name="tiny" value="\tiny"/>
+<textstyle name="center" begin="\begin{center}" end="\end{center}"/>
+<textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
+<textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
+<gridsize name="4 pts" value="4"/>
+<gridsize name="8 pts (~3 mm)" value="8"/>
+<gridsize name="16 pts (~6 mm)" value="16"/>
+<gridsize name="32 pts (~12 mm)" value="32"/>
+<gridsize name="10 pts (~3.5 mm)" value="10"/>
+<gridsize name="20 pts (~7 mm)" value="20"/>
+<gridsize name="14 pts (~5 mm)" value="14"/>
+<gridsize name="28 pts (~10 mm)" value="28"/>
+<gridsize name="56 pts (~20 mm)" value="56"/>
+<anglesize name="90 deg" value="90"/>
+<anglesize name="60 deg" value="60"/>
+<anglesize name="45 deg" value="45"/>
+<anglesize name="30 deg" value="30"/>
+<anglesize name="22.5 deg" value="22.5"/>
+<opacity name="10%" value="0.1"/>
+<opacity name="30%" value="0.3"/>
+<opacity name="50%" value="0.5"/>
+<opacity name="75%" value="0.75"/>
+<tiling name="falling" angle="-60" step="4" width="1"/>
+<tiling name="rising" angle="30" step="4" width="1"/>
+</ipestyle>
+<page>
+<layer name="alpha"/>
+<view layers="alpha" active="alpha"/>
+<path layer="alpha" matrix="1 0 0 1 39 8" stroke="black" fill="gray">
+23.8671 593.704 m
+106.565 593.625 l
+106.528 595.586 l
+111.413 592.07 l
+106.639 587.925 l
+106.602 589.961 l
+23.8047 589.957 l
+h
+</path>
+<path matrix="1 0 0 1 -5 0" stroke="black" fill="gray">
+196.56 601.195 m
+261.776 600.818 l
+261.739 602.779 l
+266.624 599.263 l
+261.85 595.118 l
+261.813 597.154 l
+196.641 596.814 l
+h
+</path>
+<path matrix="1 0 0 1 0 5" stroke="black" fill="darkgray">
+16.1572 614.1
+16.1572 614.1
+16.1572 571.886
+16.1572 571.886
+98.13 571.937
+98.13 571.937
+98.13 614.089
+98.13 614.026 u
+</path>
+<path matrix="1 0 0 1 -0.239658 95.9996" stroke="black" fill="darkgray">
+16.1572 614.1
+16.1572 614.1
+16.1572 571.886
+16.1572 571.886
+254.587 571.937
+254.574 571.937
+254.582 614.089
+254.58 614.089 u
+</path>
+<text matrix="1 0 0 1 -104.286 -1.0761" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="59.4099" height="6.593" depth="1.61" valign="top" size="large" style="center">\textbf{UNITY}</text>
+<path stroke="black" dash="dashed" pen="fat">
+188.969 655.682 m
+250.404 655.682 l
+</path>
+<path stroke="black" dash="dashed" pen="fat">
+16 656 m
+150.353 656.384 l
+</path>
+<text matrix="1 0 0 1 -93.8925 -45.5822" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="105.016" height="7.807" depth="2.82" valign="top" size="large" style="center">ROS\#</text>
+<path matrix="1 0 0 1 -12 0" stroke="black" fill="gray">
+64.6966 675.436 m
+64.9204 654.788 l
+67.3237 654.795 l
+63.2288 648.766 l
+58.8937 654.735 l
+61.2742 654.731 l
+61.1144 675.454 l
+h
+</path>
+<path stroke="black" dash="dashed" pen="fat">
+182.76 622.285 m
+249.702 622.683 l
+</path>
+<path stroke="black" dash="dashed" pen="fat">
+16 622.844 m
+113.649 622.747 l
+</path>
+<text matrix="1 0 0 1 -116.098 -80.6033" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="105.016" height="7.807" depth="2.82" valign="top" size="large" style="center">ROS Bridge</text>
+<path matrix="1 0 0 1 -38 0" stroke="black" fill="gray">
+172.763 674.454 m
+172.795 654.698 l
+175.199 654.705 l
+171.104 648.676 l
+166.769 654.645 l
+169.149 654.641 l
+169.166 674.454 l
+h
+</path>
+<path matrix="1 0 0 1 -19 9" stroke="black" fill="gray">
+328.698 673.273 m
+328.8 654.833 l
+331.204 654.84 l
+327.109 648.811 l
+322.774 654.78 l
+325.154 654.776 l
+325.051 673.233 l
+h
+</path>
+<path matrix="1 0 0 1 -8 9" stroke="black" fill="gray">
+65.6377 631.315 m
+65.6082 612.207 l
+68.0115 612.214 l
+63.9166 606.185 l
+59.5815 612.154 l
+61.962 612.15 l
+61.9868 631.242 l
+h
+</path>
+<group matrix="1 0 0 1 -9 -3">
+<path matrix="0.765 0 0 0.765 4.72783 160.843" stroke="black" fill="lightgray">
+32 704
+32 704
+32 672
+32 672
+128 672
+128 672
+128 704
+128 704 u
+</path>
+<text matrix="1 0 0 1 -174.828 -11.0123" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="59.4099" height="11.873" depth="6.89" valign="top" style="center">Unity System
+Clock</text>
+</group>
+<group matrix="1 0 0 1 -23 -3">
+<path matrix="0.765 0 0 0.765 96.302 160.678" stroke="black" fill="lightgray">
+32 704
+32 704
+32 672
+32 672
+128 672
+128 672
+128 704
+128 704 u
+</path>
+<group matrix="1 0 0 1 -66.4978 -1.00167">
+<text matrix="1 0 0 1 -21.7445 -9.78756" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="71.836" height="11.924" depth="6.95" valign="top" style="center">Virtual Robot
+Sensors</text>
+</group>
+</group>
+<group matrix="1 0 0 1 -87 -2">
+<path matrix="0.765 0 0 0.765 238.542 159.678" stroke="black" fill="lightgray">
+32 704
+32 704
+32 672
+32 672
+128 672
+128 672
+128 704
+128 704 u
+</path>
+<text matrix="1 0 0 1 53.6687 -11.7888" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="71.836" height="13.164" depth="8.2" valign="top" style="center">Robot Pose
+(Ground Truth)</text>
+</group>
+<path stroke="black" fill="darkgray">
+15.0279 648.794
+15.0279 648.794
+15.0279 629.963
+15.0279 629.963
+254.587 629.844
+254.574 629.844
+254.582 648.728
+254.58 648.744 u
+</path>
+<text matrix="1 0 0 1 -118.756 -58.1755" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="59.4099" height="9.468" depth="4.48" valign="top" size="large" style="center">\textbf{WEBSOCKET}</text>
+<path matrix="1 0 0 1 92.0001 -0.00027132" stroke="black" fill="gray">
+196.56 601.195 m
+261.776 600.818 l
+261.739 602.779 l
+266.624 599.263 l
+261.85 595.118 l
+261.813 597.154 l
+196.641 596.814 l
+h
+</path>
+<group matrix="1 0 0 1 30 1">
+<path matrix="0.765 0 0 0.765 96.308 71.7525" stroke="black" fill="lightgray">
+32 704
+32 704
+32 672
+32 672
+128 672
+128 672
+128 704
+128 704 u
+</path>
+<text matrix="1 0 0 1 -94.0604 -105.853" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="80.767" height="6.865" depth="1.88" valign="top" style="center">ROS Bag</text>
+</group>
+<path matrix="1 0 0 1 0 -2" stroke="black" fill="darkgray">
+262 660
+262 660
+262 579
+262 579
+350 579
+350 579
+350 660
+350 660 u
+</path>
+<text matrix="1 0 0 1 -12.7802 0.780226" pos="275.506 654.695" stroke="black" type="minipage" width="87.093" height="5.915" depth="0.92" valign="top" style="center">\textbf{TEST SYSTEM}</text>
+<text matrix="0 1 -1 0 962.385 286.905" pos="275.506 654.695" stroke="black" type="minipage" width="83.484" height="3.072" depth="0" valign="top" size="large" style="center">$\dots$</text>
+<group matrix="1 0 0 1 0 -4">
+<path stroke="black" fill="darkgray">
+262 707.78
+262 707.78
+262 686
+262 686
+350 686
+350 686
+350 707.78
+350 707.78 u
+</path>
+<text matrix="1 0 0 1 -10.7524 47.0551" pos="275.506 654.695" stroke="black" type="minipage" width="83.484" height="7.744" depth="2.75" valign="top" size="large" style="center">Test parameters</text>
+</group>
+<group>
+<path matrix="0.889542 0 0 0.889542 171.867 134.398" stroke="black" fill="lightgray">
+112 576
+112 576
+192 576
+192 576
+192 560
+192 560
+112 560
+112 560 u
+</path>
+<text matrix="1 0 0 1 -10.3626 -10.3357" pos="275.506 654.695" stroke="black" type="minipage" width="83.484" height="7.807" depth="2.82" valign="top" size="large" style="center">SLAM Alg. 1</text>
+</group>
+<group>
+<path matrix="0.889542 0 0 0.889542 172.223 117.22" stroke="black" fill="lightgray">
+112 576
+112 576
+192 576
+192 576
+192 560
+192 560
+112 560
+112 560 u
+</path>
+<text matrix="1 0 0 1 -10.0069 -27.5136" pos="275.506 654.695" stroke="black" type="minipage" width="83.484" height="7.807" depth="2.82" valign="top" size="large" style="center">SLAM Alg. 2</text>
+</group>
+<group>
+<path matrix="0.889542 0 0 0.889542 172.223 82.2199" stroke="black" fill="lightgray">
+112 576
+112 576
+192 576
+192 576
+192 560
+192 560
+112 560
+112 560 u
+</path>
+<text matrix="1 0 0 1 -10.0073 -62.5137" pos="275.506 654.695" stroke="black" type="minipage" width="83.484" height="7.807" depth="2.82" valign="top" size="large" style="center">SLAM Alg. n</text>
+</group>
+<path stroke="black" fill="darkgray">
+359 703
+359 703
+359 577
+359 577
+377 577
+377 577
+377 703
+377 703 u
+</path>
+<text matrix="0 1 -1 0 1071.09 370.644" pos="211.037 707.545" stroke="black" type="minipage" width="117.498" height="6.926" depth="1.93" valign="top" style="center">Performance Comparison</text>
+<path matrix="1 0 0 1 0 5" stroke="black" fill="lightgray">
+20 610.089
+20 610.089
+20 574
+20 574
+93 574
+93 574
+93 610.089
+93 610.089 u
+</path>
+<text matrix="1 0 0 1 -189.423 -94.63" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="71.836" height="17.856" depth="12.89" valign="top" style="center">\textbf{ROS}: Sensor Data, Clock, Ground Truth</text>
+</page>
+</ipe>
