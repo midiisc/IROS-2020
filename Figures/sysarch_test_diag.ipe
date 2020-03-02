@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70212" creator="Ipe 7.2.13">
-<info created="D:20200228172211" modified="D:20200228173416"/>
+<info created="D:20200228172211" modified="D:20200302091353"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -413,7 +413,7 @@ Sensors</text>
 254.582 648.728
 254.58 648.744 u
 </path>
-<text matrix="1 0 0 1 561.618 630.34" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="94.164" height="6.593" depth="1.61" valign="top" size="large" style="center">\textbf{WEBSOCKET}</text>
+<text matrix="1 0 0 1 561.618 630.34" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="94.164" height="6.642" depth="1.66" valign="top" size="large" style="center">\textbf{WebSocket}</text>
 <path matrix="1 0 0 1 769.215 694.835" stroke="black" fill="gray">
 196.56 601.195 m
 261.776 600.818 l
@@ -835,6 +835,6 @@ h
 535.351 648.795
 535.341 648.795 u
 </path>
-<text matrix="1 0 0 1 154.711 635.156" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="100.213" height="6.593" depth="1.61" valign="top" size="large" style="center">\textbf{WEBSOCKET}</text>
+<text matrix="1 0 0 1 154.711 635.156" transformations="translations" pos="211.037 707.545" stroke="black" type="minipage" width="100.213" height="6.642" depth="1.66" valign="top" size="large" style="center">\textbf{WebSocket}</text>
 </page>
 </ipe>
