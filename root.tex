@@ -38,7 +38,7 @@
 \usepackage{subcaption}
 
 \title{\LARGE \bf
-Comparison of SLAM algorithms on Unity-ROS(Robot Operating System) Simulator for Space Applications(URSSA)
+Compariing SLAM performance under varying simulated environmental conditions in Unity-ROS(Robot Operating System) Simulator for Space Applications(URSSA)
 }
 
 
@@ -60,9 +60,9 @@ Comparison of SLAM algorithms on Unity-ROS(Robot Operating System) Simulator for
 %\begin{figure*}[h]
 \begin{center}
    \centering
-    \includegraphics[width=\textwidth]{Figures/Teaser.pdf}
+    \includegraphics[width=\textwidth]{Figures/teaserfig.pdf}
      \vspace{-2em}
-    \captionof{figure}{We present a test-bed setup for evaluating vision-based navigation for lunar operations. (A) Virtual lunar topography within the simulation testbed with synthetic terrain and accurate photometric responses modeled after the surface of the moon. (B) Top-down view of the entire 1 km $\times$ 1 km lunar terrain. (C) The MER 1 rover dynamic model used in our case study simulation.}
+    \captionof{figure}{We present a test-bed setup for evaluating vision-based navigation for lunar operations. (A) Virtual lunar topography within the simulation testbed with synthetic terrain and accurate photometric responses modeled after the surface of the moon. (B)  The MER 1 rover model used in our case study simulation. (C) MER 1 camera view of the Opposition Surge}
     \label{teaserfig}
 \end{center}
 }]
@@ -136,18 +136,24 @@ If the simulator is to plugin to an external agent with independent clock, the c
 \subsubsection{Fixed Update}
 The \textit{FixedUpdate} method is used for the physics calculations in Unity by which fidelity of the physics calculations are guaranteed at a fixed rate independent of the rendering frame rate. This helps make sure that physics computations are not skipped when the rendering frame rate gets throttled, making the simulation more robust to numerical errors and instabilities from large integration steps.
 \section{Test System}
-The objective of this test system is to evaluate and compare performance of various SLAM algorithms on extra-terrestrial planetary bodies. Data is recorded over preset trajectories on the terrain using rosbags and fed as input to the SLAM algorithms, who then estimate the pose based on these inputs. Due to the probabilistic nature of many SLAM algorithms, statistical measures over multiple iterations of the same trajectory are generated and reported for performance evaluation(refer Fig.~\ref{flowchart}(B)).
-The main variables in this model are (a) Sun-Camera geometry (b) Shader Hapke coefficients (c) Path type. The test system has a total of 54 test cases as detailed below.
+The objective of this test system is to evaluate and compare effect/sensitivity of environmental parameters on the performance of SLAM algorithms on extra-terrestrial planetary bodies. Data is recorded over preset trajectories on the terrain using rosbags and fed as input to the SLAM algorithm, who then estimate the pose based on these inputs. Due to the probabilistic nature of many SLAM algorithms, statistical measures over multiple iterations of the same trajectory are generated and reported for performance evaluation(refer Fig.~\ref{flowchart}(B)).
+The main variables in this model are (a) Sun-Camera geometry (b) Shader Hapke coefficients (c) Path type.
 \subsection{Sun-Camera Geometry}
-To study performance under varying extremes of sun-camera geometry, two positions of sun's elevation-$10^\circ$(dawn/dusk) and $90^\circ$(noon) are chosen. And at each of these elevations,  three azimuths(with respect to rover camera) are tested-$0^\circ$(anti), $90^\circ$(cross) and $180^\circ$(pro). 
+To study performance under varying extremes of sun-camera geometry, two positions of sun's elevation-$20^\circ$(dawn/dusk) and $90^\circ$(noon) are chosen. And at each of these elevations,  three azimuths(with respect to rover camera) are tested-$0^\circ$(anti), $90^\circ$(cross) and $180^\circ$(pro). These conditions together simulate the solar geometry extremes over a lunar day and evaluate performance.
 \subsection{Shader Hapke coefficients}
-To evaluate algorithm performance under varying shader backscatter conditions, three test cases are proposed - adversarial, nominal and benign. This will help evaluate performance and sensitivity to shader parameters.
+To evaluate algorithm performance under varying shader backscatter conditions, four test cases are proposed - two high albedo(adversarial), one nominal and two low albedo(adversarial) shader parameter set. The albedo and backscatter coefficients are modified here to generate the various test environments. This will help evaluate performance and sensitivity to shader parameters and perturbations.
 \subsection{Path type}
-For comparing performance under different types of trajectory shapes, the algorithms have to be run with three types of trajectories - straight, circular and rectangular trajectories.
+For comparing performance under different types of trajectory shapes, the algorithms have to be run with two types of trajectories - straight and circular. This helps verify the performance of the algorithms when making gradual turns and also to check for loop-closure.
+
+Weeding out the duplicates in above mentioned test case set, the system has a total of 40 test cases.
 \section{Simulation }
 For this case study, we leveraged the modular architecture of URSSA to run a simulation using desktop PCs to distribute the compute load of virtual environment rendering and running SLAM. One machine (Intel 3.6 GHz processor, 32 GB RAM, NVIDIA GeForce RTX 2080 8 GB graphics card) ran the Unity environment simulation using Microsoft Windows 10 while the other (Intel 4 GHz processor, 8 GB RAM, NVIDIA GeForce GTX 1070 8 GB graphics card) performed the back-end SLAM estimation and robotic control using ROS Kinetic on Ubuntu 16.04. In the virtual lunar environment, the only source of illumination was sunlight, which was modeled as a directional white source (R:255,G:255,B:255). The virtual $1km\times 1km$ lunar terrain was modeled with a resolution of 0.5mm to ensure it has enough fidelity even when viewed from a height of 0.8m--1.0m (i.e., the typical height of a mast camera for a micro-rover).
+The basline is chosen as the condition at lunar dawn with sun elevation angle of $20^\circ$, the typical solar elevation angle when solar generation rate breaks even with nominal power consumption for a micro rover. The solar azimuth for the baseline case is chosen as $90^\circ$ which is the solar azimuth when you make a polar movement during lunar dawn or lunar dusk (can be $180^\circ$ also) on moon starting from equator. The camera parameters including the intrinsics and stereo baseline is calibrated for this reference test case. The rover is allowed to traverse at constant average velocity of 0.4 m/s for 100 seconds on the straight line trajectory and 0.3 m/s for 110 seconds on a circular trajectory with a steering angle held at a constant $10^\circ$ (longer time for the trajectory is given to complete the full circle). Please note that this velocity is higher than the typical extra-terrestrial rover travesal velocities of 0.05m/s, the reason for this being that we wanted to make sure that the test trajectories were long enough to allow for sufficient error accumulation so as to be observed. Also, in this case-study, only representative runs of each test case have been implemented, though in general multiple runs have to be done and the expected values are to be reported. The trajectories are chosen inside a crater in the terrain so that a feature rich environment is available for the SLAM to get better estimates (though this will be relaxed in future iterations).
+
 \section{Results and Discussion}
-To be Done
+\subsection{Straight Path}
+For the straight path, the main errors to be quantified are the drifts along X, Y and Z directions. On straight path, an approximate traverse distance of 34m was carried out. 
+\subsection{Circular Path}
 \section{Conclusion}
 To be Done.
 
